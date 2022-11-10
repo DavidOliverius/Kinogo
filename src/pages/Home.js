@@ -1,7 +1,8 @@
 import React from 'react';
+import TMDB from '../components/TMDB';
 
 const Home = () => {
-  return <div>Home Page</div>;
+  return <div><TMDB /></div>;
 };
 
 export default Home;
