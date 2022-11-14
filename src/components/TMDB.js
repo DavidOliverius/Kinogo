@@ -1,15 +1,15 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import MovieCard from './MovieCard';
+import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import MovieCard from "./MovieCard";
 
 const TMDB = () => {
-  const API_URL = 'https://api.themoviedb.org/3';
+  const API_URL = "https://api.themoviedb.org/3";
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  const [searchKey, setSearchKey] = useState("");
 
   const fetchMovies = async (searchKey) => {
-    const type = searchKey ? 'search/movie' : 'discover/movie';
+    const type = searchKey ? "search/movie" : "discover/movie";
     const {
       data: { results },
     } = await axios.get(`${API_URL}/${type}`, {

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const MovieCard = ({ movie }) => {
-  const IMAGE_PATH = 'https://image.tmdb.org/t/p/w500';
+  const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
   console.log(movie);
   return (
     <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -16,7 +16,6 @@ const MovieCard = ({ movie }) => {
         <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {movie.title}
         </div>
-
       </div>
     </div>
   );

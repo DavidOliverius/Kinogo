@@ -1,5 +1,5 @@
-import React from 'react';
-import TMDB from '../components/TMDB';
+import React from "react";
+import TMDB from "../components/TMDB";
 
 const Home = () => {
   return (
