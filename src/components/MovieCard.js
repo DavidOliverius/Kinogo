@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
-  const IMAGE_PATH = 'https://image.tmdb.org/t/p/w500';
+  const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
   console.log(movie);
   return (
     <Link
