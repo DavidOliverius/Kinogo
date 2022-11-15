@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Error from "./pages/Error";
 import SignIn from "./pages/SignIn";
+import MovieDetail from './components/MovieDetail';
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +17,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="sign-in" element={<SignIn />} />
+        <Route path="id/:id" element={<MovieDetail />} />
         <Route path="app" element={<Home />} />
         <Route path="*" element={<Error />} />
       </Routes>
