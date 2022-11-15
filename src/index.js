@@ -6,12 +6,13 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Error from "./pages/Error";
 import SignIn from "./pages/SignIn";
-import MovieDetail from './components/MovieDetail';
-
+import MovieDetail from "./components/MovieDetail";
+import NavBar from "./components/NavBar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <NavBar />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
