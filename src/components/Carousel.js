@@ -7,7 +7,7 @@ import "react-slideshow-image/dist/styles.css";
 
 const Carousel = ({ movies }) => {
   return (
-    <Box bgcolor="#0C0626">
+    <Box bgcolor="#0C0626" pt="30px">
       <Slide
         slidesToScroll={1}
         slidesToShow={6}
