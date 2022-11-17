@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 
 const Banner = ({ movie }) => {
   return (
-    <Container sx={{ height: "100%" }} maxWidth={false} disableGutters>
+    <Container sx={{ height: "70%" }} maxWidth={false} disableGutters>
       <Paper
         sx={{
           position: "relative",
@@ -17,7 +17,7 @@ const Banner = ({ movie }) => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie?.backdrop_path})`,
-          height: "70%",
+          height: "100%",
         }}
       >
         {
