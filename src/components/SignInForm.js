@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Container,
@@ -11,14 +11,19 @@ import {
   Link,
 } from "@mui/material";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
+import { useAuth } from "../auth/auth-provider";
 
 const SignInForm = () => {
+  const { signIn, error } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+
+    signIn({
+      email,
+      password,
     });
   };
 
@@ -48,6 +53,7 @@ const SignInForm = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             margin="normal"
@@ -58,7 +64,9 @@ const SignInForm = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
           />
+          {!!error && <Typography>{error}</Typography>}
           <Button
             type="submit"
             fullWidth
