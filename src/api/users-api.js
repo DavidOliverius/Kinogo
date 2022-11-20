@@ -17,7 +17,6 @@ export const getCurrentUser = async () => {
 
     return response.data;
   }
-
   return { isValid: false };
 };
 

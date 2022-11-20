@@ -33,8 +33,7 @@ export const AuthProvider = ({ children }) => {
           setIsLoggedIn(true);
         }
       })
-      .catch((error) => {
-        setError(error.response.data.error.message);
+      .catch(() => {
         logout();
       })
       .finally(() => setLoadingInitial(false));
@@ -51,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("kinogo-user", JSON.stringify(user));
         navigate("/");
       })
-      .catch((error) => setError(error.response.data.error.message))
+      .catch((error) => setError(error.response.data.message))
       .finally(() => setLoading(false));
   };
 
@@ -66,7 +65,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("kinogo-user", JSON.stringify(user));
         navigate("/");
       })
-      .catch((error) => {
+      .catch(() => {
         setError(
           "There was a problem signing you in. Please check your email and password"
         );
