@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
       .then(({ isValid }) => {
         if (isValid) {
           setIsLoggedIn(true);
+          setUser(JSON.parse(localStorage.getItem("kinogo-user")));
         }
       })
       .catch(() => {
