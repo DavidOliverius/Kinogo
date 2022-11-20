@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
@@ -10,18 +10,20 @@ import {
   Container,
   Avatar,
 } from "@mui/material";
-
 import LiveTvIcon from "@mui/icons-material/LiveTv";
+import { useAuth } from "../auth/auth-provider";
 
 const SignUpForm = () => {
-  const handleSubmit = (event) => {
+  const { signUp, error } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    signUp({ email, password, displayName: username });
   };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -46,6 +48,8 @@ const SignUpForm = () => {
                 label="Username"
                 name="username"
                 autoComplete="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -56,6 +60,8 @@ const SignUpForm = () => {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -67,9 +73,12 @@ const SignUpForm = () => {
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>
+          {!!error && <Typography>{error}</Typography>}
           <Button
             type="submit"
             fullWidth
