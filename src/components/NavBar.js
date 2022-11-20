@@ -49,6 +49,9 @@ const NavBar = () => {
     }
   };
 
+  const { user } = useAuth();
+  const username = user ? user.displayName : null;
+
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
       <Container maxWidth="xl">
@@ -143,7 +146,11 @@ const NavBar = () => {
             <>
               <Tooltip title="Open userLinks">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar
+                    alt={username}
+                    src={`https://avatars.dicebear.com/api/initials/:${username}.svg?chars=1`}
+                    variant="rounded"
+                  />
                 </IconButton>
               </Tooltip>
               <Menu
