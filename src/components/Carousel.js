@@ -15,13 +15,13 @@ const Carousel = ({ movies }) => {
       ) : (
         <Slide
           slidesToScroll={1}
-          slidesToShow={6}
+          slidesToShow={8}
           transitionDuration={300}
           autoplay={false}
           cssClass="card-width"
         >
           {movies.map((movie) => (
-            <Link to={`movie/${movie.id}`}>
+            <Link to={`movie/${movie.id}`} key={movie.id}>
               <Box maxWidth={200}>
                 <Card sx={{ maxWidth: 200 }}>
                   <CardMedia
