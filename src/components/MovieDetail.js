@@ -52,7 +52,9 @@ const MovieDetail = () => {
             />
           </div>
           <div className="movie-detail__info">
-            <h1 className="movie-detail__title">{movie.title}</h1>
+            <h1 className="movie-detail__title">
+              {movie.title} ({movie.release_date.slice(0, 4)})
+            </h1>
             <p className="movie-detail__tagline">{movie.tagline}</p>
             <p className="movie-detail__overview">{movie.overview}</p>
             <p className="movie-detail__release-date">
