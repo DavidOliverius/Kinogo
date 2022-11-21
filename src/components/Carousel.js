@@ -15,7 +15,7 @@ const Carousel = ({ movies }) => {
       ) : (
         <Slide
           slidesToScroll={1}
-          slidesToShow={6}
+          slidesToShow={8}
           transitionDuration={300}
           autoplay={false}
           cssClass="card-width"
