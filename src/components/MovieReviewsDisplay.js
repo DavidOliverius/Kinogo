@@ -46,7 +46,7 @@ const MovieReviewsDisplay = () => {
         <Paper
           style={{
             padding: "40px 20px",
-            marginTop: 100,
+            marginBottom: 35,
             backgroundColor: "#f5f5f5",
           }}
         >
