@@ -21,7 +21,7 @@ const Carousel = ({ movies }) => {
           cssClass="card-width"
         >
           {movies.map((movie) => (
-            <Link to={`id/${movie.id}`}>
+            <Link to={`movie/${movie.id}`}>
               <Box maxWidth={200}>
                 <Card sx={{ maxWidth: 200 }}>
                   <CardMedia
