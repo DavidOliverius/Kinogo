@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import StarRating from "./StarRating";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { useAuth } from "../auth/auth-provider";
+import Rating from "@mui/material/Rating";
+import Typography from "@mui/material/Typography";
 
 function MovieReviewForm() {
   const { id } = useParams();
@@ -57,23 +58,20 @@ function MovieReviewForm() {
             onChange={(event) => setReview(event.target.value)}
           ></TextField>
         </div>
-        <div className="form-group">
-          <label htmlFor="rating">Rating</label>
-          <select
-            className="form-control"
+        <Box
+          sx={{
+            "& > legend": { mt: 2 },
+          }}
+        >
+          <Typography component="legend">Rating</Typography>
+          <Rating
+            name="rating"
             id="rating"
             value={rating}
+            precision={0.5}
             onChange={(event) => setRating(event.target.value)}
-          >
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <StarRating />
+          />
+        </Box>
         <Button type="submit" variant="contained">
           Submit
         </Button>
