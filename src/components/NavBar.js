@@ -149,7 +149,6 @@ const NavBar = () => {
                   <Avatar
                     alt={username}
                     src={`https://avatars.dicebear.com/api/initials/:${username}.svg?chars=1`}
-                    variant="rounded"
                   />
                 </IconButton>
               </Tooltip>
