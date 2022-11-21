@@ -5,9 +5,12 @@ import StarRating from "./StarRating";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import { useAuth } from "../auth/auth-provider";
 
-function MovieReviewForm(props) {
+function MovieReviewForm() {
   const { id } = useParams();
+  const { user } = useAuth();
+  const uid = user.uid;
   const [reviewContent, setReview] = React.useState("");
   const [rating, setRating] = React.useState(0);
   const [reviewTitle, setReviewTitle] = React.useState("");
@@ -16,11 +19,11 @@ function MovieReviewForm(props) {
     event.preventDefault();
     axios
       .post("http://localhost:55000/reviews", {
-        // TODO: Add user uid
         reviewTitle: reviewTitle,
         reviewApiID: id,
         reviewContent: reviewContent,
         rating: rating,
+        reviewAuthorID: uid,
       })
       .then((response) => {
         console.log(response);
