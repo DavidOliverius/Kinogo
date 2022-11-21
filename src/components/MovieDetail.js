@@ -3,13 +3,15 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieReviewForm from "./MovieReviewForm";
-
+import MovieReviewsDisplay from "./MovieReviewsDisplay";
+import { useAuth } from "../auth/auth-provider";
 
 const MovieDetail = () => {
   const { id } = useParams();
   const [movie, setMovie] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
+  const user = useAuth().user;
 
   React.useEffect(() => {
     const fetchMovie = async () => {
@@ -50,7 +52,9 @@ const MovieDetail = () => {
             />
           </div>
           <div className="movie-detail__info">
-            <h1 className="movie-detail__title">{movie.title}</h1>
+            <h1 className="movie-detail__title">
+              {movie.title} ({movie.release_date.slice(0, 4)})
+            </h1>
             <p className="movie-detail__tagline">{movie.tagline}</p>
             <p className="movie-detail__overview">{movie.overview}</p>
             <p className="movie-detail__release-date">
@@ -70,7 +74,8 @@ const MovieDetail = () => {
           </div>
         </div>
         <Link to="/">Back to Home</Link>
-        <MovieReviewForm />
+        {user && <MovieReviewForm />}
+        <MovieReviewsDisplay />
       </div>
     )
   );
