@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieReviewForm from "./MovieReviewForm";
 
+
 const MovieDetail = () => {
   const { id } = useParams();
   const [movie, setMovie] = React.useState(null);

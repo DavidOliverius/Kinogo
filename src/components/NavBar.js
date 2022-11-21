@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,33 +8,49 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-// import Avatar from "@mui/material/Avatar";
+import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-// import Tooltip from "@mui/material/Tooltip";
+import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useAuth } from "../auth/auth-provider";
 
 const pages = ["Search", "TV Shows", "Movies", "My List"];
-// const settings = ["My Reviews", "Profile", "Logout"];
+const userLinks = [{ name: "Profile", path: "/profile" }, { name: "Logout" }];
 
-function ResponsiveAppBar() {
+const NavBar = () => {
+  const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  //   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  //   const handleOpenUserMenu = (event) => {
-  //     setAnchorElUser(event.currentTarget);
-  //   };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  //   const handleCloseUserMenu = () => {
-  //     setAnchorElUser(null);
-  //   };
+  const handleCloseUserMenu = (event) => {
+    const {
+      target: { textContent },
+    } = event;
+    setAnchorElUser(null);
+
+    if (textContent !== "Logout") {
+      navigate(userLinks.find((link) => link.name === textContent)["path"]);
+    } else {
+      logout();
+    }
+  };
+
+  const { user } = useAuth();
+  const username = user ? user.displayName : null;
 
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
@@ -125,45 +142,57 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Button href="/sign-in" color="inherit">
-              Login
-            </Button>
-            <Button href="/sign-up" color="inherit">
-              Sign Up
-            </Button>
-            {/* Waiting for sign in logic */}
-            {/* <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip> */}
-            {/* <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
-          </Box>
+          {isLoggedIn ? (
+            <>
+              <Tooltip title="Open userLinks">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt={username}
+                    src={`https://avatars.dicebear.com/api/initials/:${username}.svg?chars=1`}
+                    variant="rounded"
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {userLinks.map(({ name, path }) => (
+                  <MenuItem
+                    href={path}
+                    key={name}
+                    onClick={handleCloseUserMenu}
+                  >
+                    <Typography textAlign="center">{name}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <>
+              <Button href="/sign-in" color="inherit">
+                Login
+              </Button>
+              <Button href="/sign-up" color="inherit">
+                Sign Up
+              </Button>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
-export default ResponsiveAppBar;
+};
+export default NavBar;

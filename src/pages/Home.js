@@ -9,7 +9,7 @@ const Home = () => {
   // const [searchKey, setSearchKey] = useState("");
 
   const fetchMovies = async (searchKey) => {
-    const type = searchKey ? "search/movie" : "discover/movie";
+    const type = searchKey ? "search/movie" : "trending/movie/week";
     const {
       data: { results },
     } = await axios.get(`${API_URL}/${type}`, {
