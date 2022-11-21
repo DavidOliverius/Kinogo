@@ -26,6 +26,7 @@ const Banner = ({ movie }) => {
             color: "#fff",
             mb: 4,
             backgroundSize: "cover",
+            backgroundPosition: "center top",
             backgroundRepeat: "no-repeat",
             backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie?.backdrop_path})`,
             height: "100%",
