@@ -14,13 +14,15 @@ function MovieReviewForm() {
   const uid = user.uid;
   const [reviewContent, setReview] = React.useState("");
   const [rating, setRating] = React.useState(0);
-  const [reviewTitle, setReviewTitle] = React.useState("");
+  const BASE_URL =
+    process.env.NODE_ENV !== "production"
+      ? process.env.REACT_APP_DEV_BASE_URL
+      : process.env.REACT_APP_PROD_BASE_URL;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:55000/reviews", {
-        reviewTitle: reviewTitle,
+      .post(`${BASE_URL}/reviews`, {
         reviewApiID: id,
         reviewContent: reviewContent,
         rating: rating,
@@ -34,50 +36,105 @@ function MovieReviewForm() {
       });
   };
 
-  return (
-    <Box>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="reviewTitle">Review Title</label>
-          <input
-            type="text"
-            className="form-control"
-            id="reviewTitle"
-            name="reviewTitle"
-            onChange={(event) => setReviewTitle(event.target.value)}
-          />
+  console.log(rating)
 
-          <label htmlFor="review">Review</label>
-          <TextField
-            fullWidth
-            className="form-control"
-            label="Review"
-            id="reviewContent"
-            rows="3"
-            value={reviewContent}
-            onChange={(event) => setReview(event.target.value)}
-          ></TextField>
-        </div>
-        <Box
-          sx={{
-            "& > legend": { mt: 2 },
-          }}
-        >
-          <Typography component="legend">Rating</Typography>
-          <Rating
-            name="rating"
-            id="rating"
-            value={rating}
-            precision={0.5}
-            onChange={(event) => setRating(event.target.value)}
-          />
-        </Box>
-        <Button type="submit" variant="contained">
-          Submit
-        </Button>
-      </form>
+  // const handleEdit = (event) => {
+  //   event.preventDefault();
+  //   axios
+  //     .put(`${BASE_URL}/reviews/`, {
+  //       reviewContent: reviewContent,
+  //       rating: rating,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
+  // const handleDelete = (event) => {
+  //   event.preventDefault();
+  //   axios
+  //     .delete(`${BASE_URL}/reviews`, {
+  //       _id: id,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
+  return (
+    // mui component to create a review, rating, and submit button
+    <Box
+      component="form"
+      sx={{
+        "& > :not(style)": { m: 1, width: "25ch" },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField
+        id="outlined-multiline-static"
+        label="Review"
+        multiline
+        rows={4}
+        defaultValue="Write your review here"
+        onChange={(event) => setReview(event.target.value)}
+      />
+      <Typography component="legend">Rating</Typography>
+      <Rating
+        size="large"
+        name="rating"
+        id="rating"
+        value={rating}
+        precision={0.5}
+        onChange={(event) => setRating(event.target.value)}
+      />
+      <Button variant="contained" onClick={handleSubmit}>
+        Submit
+      </Button>
     </Box>
   );
 }
+
+//     <Box>
+//       <form onSubmit={handleSubmit}>
+//         <div className="form-group">
+//           <label htmlFor="review"></label>
+//           <TextField
+//             className="form-control"
+//             label="Review"
+//             id="reviewContent"
+//             rows="3"
+//             value={reviewContent}
+//             onChange={(event) => setReview(event.target.value)}
+//           ></TextField>
+//         </div>
+//         <Box
+//           sx={{
+//             "& > legend": { mt: 2 },
+//           }}
+//         >
+//           <Typography component="legend">Rating</Typography>
+//           <Rating
+//             size="large"
+//             name="rating"
+//             id="rating"
+//             value={rating}
+//             precision={0.5}
+//             onChange={(event) => setRating(event.target.value)}
+//           />
+//         </Box>
+//         <Button type="submit" variant="contained">
+//           Submit
+//         </Button>
+//       </form>
+//     </Box>
+//   );
+// }
 
 export default MovieReviewForm;

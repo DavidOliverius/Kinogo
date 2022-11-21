@@ -3,8 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 
 const MovieReviewsDisplay = () => {
   const { id } = useParams();
@@ -42,35 +43,42 @@ const MovieReviewsDisplay = () => {
     <div>
       <h1>Reviews</h1>
       {reviews.map((review) => (
-        <div key={review._id}>
-          <h2>{review.reviewTitle}</h2>
-          <div>
-            <p>{review.reviewContent}</p>
-            <p>
-              Review by: <strong>{review.user}</strong>
-            </p>
-            <Avatar
-              alt={review.user}
-              src={`https://avatars.dicebear.com/api/initials/:${review.user}.svg?chars=1`}
-              variant="rounded"
-            />
-            <Box
-              sx={{
-                "& > legend": { mt: 2 },
-              }}
-            >
-              <Typography component="legend">Rating</Typography>
-              <Rating
-                readOnly
-                name="rating"
-                id="rating"
-                value={review.rating}
-                precision={0.5}
+        <Paper
+          style={{
+            padding: "40px 20px",
+            marginTop: 100,
+            backgroundColor: "#f5f5f5",
+          }}
+        >
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar
+                alt={review.user}
+                src={`https://avatars.dicebear.com/api/initials/:${review.user}.svg?chars=1`}
               />
-            </Box>
-            <p>{new Date(review.createdAt).toLocaleDateString()}</p>
-          </div>
-        </div>
+            </Grid>
+            <Grid justifyContent="left" item xs zeroMinWidth>
+              <h3 style={{ margin: 0, textAlign: "left" }}>{review.user}</h3>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  textAlign: "left",
+                }}
+              >
+                <Rating value={review.rating} readOnly precision={0.5} />
+              </Box>
+              <Grid container justifyItems="center">
+                <Grid item></Grid>
+              </Grid>
+              <p style={{ textAlign: "left" }}>{review.reviewContent} </p>
+
+              <p style={{ textAlign: "left", color: "gray" }}>
+                {new Date(review.createdAt).toLocaleDateString()}
+              </p>
+            </Grid>
+          </Grid>
+        </Paper>
       ))}
     </div>
   );
