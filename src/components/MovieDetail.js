@@ -1,7 +1,8 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import MovieReviewForm from "./MovieReviewForm";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -34,13 +35,41 @@ const MovieDetail = () => {
   if (error) return <div>Error!</div>;
   if (!movie) return null;
 
+  // display all the movie information
+
   return (
     console.log(movie),
     (
       <div>
-        <h1>{movie.title}</h1>
-        <p>{movie.overview}</p>
-        <Link to="/">Back</Link>
+        <div className="movie-detail">
+          <div className="movie-detail__poster">
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </div>
+          <div className="movie-detail__info">
+            <h1 className="movie-detail__title">{movie.title}</h1>
+            <p className="movie-detail__tagline">{movie.tagline}</p>
+            <p className="movie-detail__overview">{movie.overview}</p>
+            <p className="movie-detail__release-date">
+              Release Date: {movie.release_date}
+            </p>
+            <p className="movie-detail__runtime">
+              Runtime: {movie.runtime} mins
+            </p>
+            <p className="movie-detail__genres">
+              Genres:
+              {movie.genres.map((genre, index) => {
+                return index < movie.genres.length - 1
+                  ? ` ${genre.name},`
+                  : ` ${genre.name}`;
+              })}
+            </p>
+          </div>
+        </div>
+        <Link to="/">Back to Home</Link>
+        <MovieReviewForm />
       </div>
     )
   );
