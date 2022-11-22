@@ -39,6 +39,10 @@ const MovieReviewsDisplay = () => {
     return <h1>No reviews yet!</h1>;
   }
 
+  reviews.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
   return (
     <div>
       <h1>Reviews</h1>
