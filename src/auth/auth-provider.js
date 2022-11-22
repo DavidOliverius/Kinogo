@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
         setUser(user);
         setIsLoggedIn(true);
         localStorage.setItem("kinogo-user", JSON.stringify(user));
-        navigate("/");
+        navigate(-1);
       })
       .catch(() => {
         setError(
