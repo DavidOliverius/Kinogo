@@ -6,7 +6,7 @@ import MovieReviewForm from "./MovieReviewForm";
 import MovieReviewsDisplay from "./MovieReviewsDisplay";
 import { useAuth } from "../auth/auth-provider";
 import Box from "@mui/material/Box";
-import Rating from "@mui/material/Rating";
+// import Rating from "@mui/material/Rating";
 
 const MovieDetail = () => {
   const { id } = useParams();

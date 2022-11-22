@@ -16,7 +16,6 @@ function MovieReviewForm() {
   const uid = user.uid;
   const [reviewContent, setReview] = React.useState("");
   const [rating, setRating] = React.useState(0);
-  const [formSubmitted, setFormSubmitted] = React.useState(false);
   const BASE_URL =
     process.env.NODE_ENV !== "production"
       ? process.env.REACT_APP_DEV_BASE_URL
@@ -125,7 +124,6 @@ function MovieReviewForm() {
               <Button
                 variant="contained"
                 onClick={handleSubmit}
-                disabled={formSubmitted}
               >
                 Submit
               </Button>
