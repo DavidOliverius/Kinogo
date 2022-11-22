@@ -72,6 +72,7 @@ function MovieReviewForm() {
 
   return (
     <div>
+      <h2>Write a review</h2>
       <Paper
         style={{
           padding: "40px 20px",
@@ -112,10 +113,9 @@ function MovieReviewForm() {
                 sx={{ backgroundColor: "white" }}
                 fullWidth
                 id="outlined-multiline-static"
-                label="Review"
+                label="What did you think?"
                 multiline
                 rows={4}
-                defaultValue="Write your review here"
                 onChange={(event) => setReview(event.target.value)}
               />
             </p>
