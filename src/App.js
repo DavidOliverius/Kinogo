@@ -32,7 +32,7 @@ const App = () => {
         />
         <Route path="movie/:id" element={<MovieDetail />} />
         <Route
-          path="profile"
+          path="profile/:id"
           element={isLoggedIn ? <Profile /> : <Navigate replace to="/" />}
         />
         <Route path="*" element={<Error />} />
