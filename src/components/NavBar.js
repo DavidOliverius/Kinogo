@@ -15,14 +15,19 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useAuth } from "../auth/auth-provider";
 
-const pages = ["Search", "TV Shows", "Movies", "My List"];
-const userLinks = [{ name: "Profile", path: "/profile" }, { name: "Logout" }];
-
 const NavBar = () => {
+  const pages = ["Search", "Movies", "My List"];
+  const { user } = useAuth();
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const username = user ? user.displayName : null;
+  const uid = user ? user.uid : null;
+  const userLinks = [
+    { name: "Profile", path: `/profile/${uid}` },
+    { name: "Logout" },
+  ];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,9 +53,6 @@ const NavBar = () => {
       logout();
     }
   };
-
-  const { user } = useAuth();
-  const username = user ? user.displayName : null;
 
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
