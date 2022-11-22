@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import MovieReviewForm from "./MovieReviewForm";
 import MovieReviewsDisplay from "./MovieReviewsDisplay";
 import { useAuth } from "../auth/auth-provider";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -73,12 +75,31 @@ const MovieDetail = () => {
             </p>
           </div>
         </div>
-        <Link to="/">Back to Home</Link>
-        {user && <MovieReviewForm />}
-        <MovieReviewsDisplay />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Box sx={{ width: 550 }}>{user && <MovieReviewForm />}</Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Box sx={{ width: 550 }}>
+            <MovieReviewsDisplay />
+          </Box>
+        </Box>
       </div>
     )
   );
 };
+
+<Link to="/">Back to Home</Link>;
 
 export default MovieDetail;
