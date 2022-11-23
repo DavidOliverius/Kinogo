@@ -172,7 +172,6 @@ const MovieDetail = () => {
       </Box>
       <Box
         sx={{
-        
           bottom: 0,
           width: "100%",
         }}
@@ -190,8 +189,6 @@ const MovieDetail = () => {
           flexDirection: "column",
           alignItems: "center",
           marginTop: "100px",
-
-          
         }}
       >
         <MovieReviewsDisplay />
