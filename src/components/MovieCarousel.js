@@ -1,12 +1,12 @@
-import React from "react";
-import Carousel from "react-multi-carousel";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
+import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
-import "react-multi-carousel/lib/styles.css";
-import { Typography } from "@mui/material";
 
 const responsive = {
   superLargeDesktop: {
@@ -32,7 +32,14 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
   const filteredMovies = movies.filter((movie) => movie.poster_path !== null);
 
   return (
-    <Box pt="30px" bgcolor="rgb(12, 6, 38)" postion="relative">
+    <Box
+      pt="30px"
+      bgcolor="rgb(12, 6, 38)"
+      postion="relative"
+      maxWidth={"xl"}
+      marginLeft={"auto"}
+      marginRight={"auto"}
+    >
       {!filteredMovies ? (
         <Spinner />
       ) : (

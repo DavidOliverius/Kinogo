@@ -1,25 +1,29 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-// import { Link } from "react-router-dom";
-// import MovieReviewForm from "./MovieReviewForm";
-// import MovieReviewsDisplay from "./MovieReviewsDisplay";
-// import { useAuth } from "../auth/auth-provider";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import MovieCarousel from "./MovieCarousel";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-// import CardActions from "@mui/material/CardActions";
+import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useAuth } from "../auth/auth-provider";
+import MovieCarousel from "./MovieCarousel";
+import MovieReviewForm from "./MovieReviewForm";
+import MovieReviewsDisplay from "./MovieReviewsDisplay";
 
 const MovieDetail = () => {
+  const { isLoggedIn } = useAuth();
   const { id } = useParams();
+
   const [movie, setMovie] = React.useState(null);
   const [recommendations, setRecommendations] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
-  // const { user } = useAuth();
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   React.useEffect(() => {
     const fetchMovie = async () => {
@@ -72,7 +76,13 @@ const MovieDetail = () => {
   // display all the movie information
 
   return (
-    <Box height="100%" position="relative">
+    <Box
+      height="100%"
+      position="relative"
+      maxWidth={"xl"}
+      marginLeft={"auto"}
+      marginRight={"auto"}
+    >
       <Box
         sx={{
           position: "relative",
@@ -102,15 +112,22 @@ const MovieDetail = () => {
           left: 40,
         }}
       >
-        <Typography variant="h3" component="div" color="white">
+        <Typography
+          variant="h2"
+          component="div"
+          color="white"
+          fontWeight="bold"
+        >
           {movie.title} ({movie.release_date.slice(0, 4)})
         </Typography>
-        <Typography variant="body1" component="div" color="white">
+        <Typography variant="h5" component="div" color="white">
           {movie.genres.map((genre, index) => {
             return index < movie.genres.length - 1
               ? ` ${genre.name},`
               : ` ${genre.name}`;
           })}
+        </Typography>
+        <Typography variant="body1" component="div" color="white">
           {movie.runtime} mins
         </Typography>
         <Card
@@ -122,22 +139,33 @@ const MovieDetail = () => {
               variant="h5"
               component="div"
               color="white"
-              fontWeight="bold"
+              sx={{ fontStyle: "italic" }}
             >
               Synopsis
             </Typography>
-            <Typography variant="body2" color="white" marginTop="20px">
+            <Typography variant="body1" color="white" marginTop="20px">
               {movie.overview}
             </Typography>
           </CardContent>
-          <Button
-            color="error"
-            size="medium"
-            variant="outlined"
-            sx={{ marginTop: "20px" }}
-          >
-            Review
-          </Button>
+          {isLoggedIn ? (
+            <div>
+              <Button
+                sx={{ marginTop: "50px" }}
+                onClick={handleOpen}
+                variant="contained"
+              >
+                Write Review
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <MovieReviewForm />
+              </Modal>
+            </div>
+          ) : null}
         </Card>
       </Box>
       <Box
@@ -153,6 +181,18 @@ const MovieDetail = () => {
             carouselTitle="Recommendations"
           />
         )}
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "100px",
+
+          
+        }}
+      >
+        <MovieReviewsDisplay />
       </Box>
     </Box>
   );
