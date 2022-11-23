@@ -40,7 +40,7 @@ const MovieReviewsDisplay = () => {
   if (error) return <div>Error!</div>;
   if (!reviews) return null;
   if (reviews.length === 0) {
-    return <h1>No reviews yet!</h1>;
+    return <h2 style={{ color: "white" }}>No reviews yet!</h2>;
   }
 
   reviews.sort((a, b) => {
