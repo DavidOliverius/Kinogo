@@ -10,7 +10,7 @@ const Banner = ({ movie }) => {
   return (
     <Container
       sx={{
-        height: "70%",
+        height: "65%",
         backgroundColor: "grey.800",
       }}
       maxWidth={false}

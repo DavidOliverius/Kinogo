@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Banner from "../components/Banner";
-import Carousel from "../components/Carousel";
+import MovieCarousel from "../components/MovieCarousel";
 import { Box } from "@mui/material";
 
 const Home = () => {
@@ -37,8 +37,8 @@ const Home = () => {
   return (
     <Box height="100%">
       <Banner movie={movies[randomNum]} />
-      <Carousel movies={movies.slice(0, 10)} />
-      <Carousel movies={movies.slice(10, 21)} />
+      <MovieCarousel movies={movies.slice(0, 10)} />
+      <MovieCarousel movies={movies.slice(10, 21)} />
     </Box>
   );
 };

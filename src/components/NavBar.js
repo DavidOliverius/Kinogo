@@ -15,7 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useAuth } from "../auth/auth-provider";
 
-const pages = ["Search", "TV Shows", "Movies", "My List"];
+const pages = ["Search", "Movies", "My List"];
 const userLinks = [{ name: "Profile", path: "/profile" }, { name: "Logout" }];
 
 const NavBar = () => {
