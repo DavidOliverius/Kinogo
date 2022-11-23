@@ -1,17 +1,12 @@
-// import React, { useState } from "react";
-// import MovieCard from "../components/MovieCard";
+import React from "react";
+import TMDB from "../components/TMDB";
 
-// const Search = (movie) => {
-//   const [movies, setMovies] = useState([]);
+const Search = () => {
+  return (
+    <div>
+      <TMDB />
+    </div>
+  );
+};
 
-//   const renderMovies = () =>
-//     movies.map((movie) => <MovieCard key={movie.id} movie={movie} />);
-
-//   return (
-//     <div>
-//       <div>{renderMovies(movie)}</div>
-//     </div>
-//   );
-// };
-
-// export default Search;
+export default Search;
