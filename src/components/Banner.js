@@ -5,9 +5,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Spinner from "./Spinner";
+import { Link } from "react-router-dom";
 
 const Banner = ({ movie }) => {
   return (
+    
     <Container
       sx={{
         height: "65%",
@@ -16,9 +18,11 @@ const Banner = ({ movie }) => {
       maxWidth={false}
       disableGutters
     >
+      
       {!movie ? (
         <Spinner />
       ) : (
+        <Link to={`/movie/${movie.id}`} key={movie.id}>
         <Paper
           sx={{
             position: "relative",
@@ -67,7 +71,9 @@ const Banner = ({ movie }) => {
             </Grid>
           </Grid>
         </Paper>
+        </Link>
       )}
+     
     </Container>
   );
 };
