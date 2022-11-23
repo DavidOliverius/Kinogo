@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import MovieDetail from "./pages/MovieDetail";
 import Profile from "./pages/Profile";
 import { useAuth } from "./auth/auth-provider";
+import Search from "./pages/Search";
 
 const App = () => {
   const { isLoggedIn } = useAuth();
@@ -36,6 +37,7 @@ const App = () => {
           element={isLoggedIn ? <Profile /> : <Navigate replace to="/" />}
         />
         <Route path="*" element={<Error />} />
+        <Route path="search" element={<Search />} />
       </Routes>
     </Container>
   );
