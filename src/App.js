@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Error from "./pages/Error";
 import SignIn from "./pages/SignIn";
-import MovieDetail from "./components/MovieDetail";
+import MovieDetail from "./pages/MovieDetail";
 import Profile from "./pages/Profile";
 import { useAuth } from "./auth/auth-provider";
 

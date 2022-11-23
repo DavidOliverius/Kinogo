@@ -34,7 +34,7 @@ const SignUpForm = () => {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "#000" }}>
+        <Avatar sx={{ m: 1, bgcolor: "#0C0626" }}>
           <LiveTvIcon />
         </Avatar>
         <Typography variant="h6">Sign up for a free Kinogo account</Typography>
