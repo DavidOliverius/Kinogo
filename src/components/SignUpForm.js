@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
 import {
-  Box,
-  Typography,
-  Grid,
-  Button,
-  TextField,
-  Link,
-  Container,
   Avatar,
+  Box,
+  Button,
+  Container,
+  Grid,
+  Link,
+  TextField,
+  Typography,
 } from "@mui/material";
+import React, { useState } from "react";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
+import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../auth/auth-provider";
 
 const SignUpForm = () => {

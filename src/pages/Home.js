@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { Box } from "@mui/material";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import MovieCarousel from "../components/MovieCarousel";
-import { Box } from "@mui/material";
 
 const Home = () => {
   const API_URL = "https://api.themoviedb.org/3";

@@ -1,6 +1,6 @@
 import React from "react";
-import { useAuth } from "../auth/auth-provider";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../auth/auth-provider";
 
 const Profile = () => {
   const { id } = useParams();
