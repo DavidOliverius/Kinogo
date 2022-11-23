@@ -115,7 +115,7 @@ const MovieDetail = () => {
         }}
       >
         <Typography
-          variant="h2"
+          variant="h3"
           component="div"
           color="white"
           fontWeight="bold"
