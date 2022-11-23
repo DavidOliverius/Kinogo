@@ -19,7 +19,7 @@ const MovieDetail = () => {
   const [recommendations, setRecommendations] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   React.useEffect(() => {
     const fetchMovie = async () => {
