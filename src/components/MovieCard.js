@@ -8,7 +8,11 @@ const MovieCard = ({ movie }) => {
 
   return (
     <ImageListItem key={movie.id}>
-      <Link to={`../movie/${movie.id}`} relative="true">
+      <Link
+        to={`../movie/${movie.id}`}
+        relative="true"
+        style={{ textDecoration: "none" }}
+      >
         <img
           src={`${IMAGE_PATH}${movie.poster_path}`}
           alt={movie.title}
