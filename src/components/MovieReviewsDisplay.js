@@ -1,17 +1,15 @@
-import React from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Rating from "@mui/material/Rating";
 import Avatar from "@mui/material/Avatar";
-import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Rating from "@mui/material/Rating";
+import axios from "axios";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
+import React from "react";
+import { useParams } from "react-router-dom";
 
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
-
-TimeAgo.addDefaultLocale(en)
-
+TimeAgo.addDefaultLocale(en);
 
 const MovieReviewsDisplay = () => {
   const { id } = useParams();
@@ -51,13 +49,16 @@ const MovieReviewsDisplay = () => {
 
   return (
     <div>
-      <h2>Reviews</h2>
+      <h2 style={{ color: "white" }}>Reviews</h2>
       {reviews.map((review) => (
         <Paper
           style={{
-            padding: "40px 20px",
+            padding: "40px 40px",
             marginBottom: 35,
             backgroundColor: "#f5f5f5",
+            maxWidth: 600,
+            minWidth: 600,
+            bgcolor: "background.paper",
           }}
         >
           <Grid container wrap="nowrap" spacing={2}>
@@ -84,7 +85,7 @@ const MovieReviewsDisplay = () => {
               <p style={{ textAlign: "left" }}>{review.reviewContent} </p>
 
               <p style={{ textAlign: "left", color: "gray" }}>
-                posted {new TimeAgo('en-US').format(new Date(review.createdAt))}
+                posted {new TimeAgo("en-US").format(new Date(review.createdAt))}
               </p>
             </Grid>
           </Grid>
