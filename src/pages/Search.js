@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import MovieCard from "../components/MovieCard";
+// import React, { useState } from "react";
+// import MovieCard from "../components/MovieCard";
 
-const Search = (movie) => {
-  const [movies, setMovies] = useState([]);
+// const Search = (movie) => {
+//   const [movies, setMovies] = useState([]);
 
-  const renderMovies = () =>
-    movies.map((movie) => <MovieCard key={movie.id} movie={movie} />);
+//   const renderMovies = () =>
+//     movies.map((movie) => <MovieCard key={movie.id} movie={movie} />);
 
-  return (
-    <div>
-      <div>{renderMovies(movie)}</div>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <div>{renderMovies(movie)}</div>
+//     </div>
+//   );
+// };
 
-export default Search;
+// export default Search;

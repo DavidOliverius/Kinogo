@@ -21,10 +21,6 @@ function MovieReviewForm() {
       ? process.env.REACT_APP_DEV_BASE_URL
       : process.env.REACT_APP_PROD_BASE_URL;
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
