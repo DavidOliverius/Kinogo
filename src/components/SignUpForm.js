@@ -1,3 +1,4 @@
+import LiveTvIcon from "@mui/icons-material/LiveTv";
 import {
   Avatar,
   Box,
@@ -9,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../auth/auth-provider";
 
@@ -28,7 +28,7 @@ const SignUpForm = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginBottom: 20,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
