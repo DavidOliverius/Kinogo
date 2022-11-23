@@ -40,6 +40,21 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
       marginLeft={"auto"}
       marginRight={"auto"}
     >
+          {!!carouselTitle && (
+        <Typography
+          variant="h5"
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+         
+            top: -20,
+            left: 15,
+            marginBottom: 2
+          }}
+        >
+          {carouselTitle}
+        </Typography>
+      )}
       {!filteredMovies ? (
         <Spinner />
       ) : (
@@ -60,20 +75,7 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
           ))}
         </Carousel>
       )}
-      {!!carouselTitle && (
-        <Typography
-          variant="h5"
-          sx={{
-            color: "white",
-            fontWeight: "bold",
-            position: "absolute",
-            top: -20,
-            left: 15,
-          }}
-        >
-          {carouselTitle}
-        </Typography>
-      )}
+  
     </Box>
   );
 };

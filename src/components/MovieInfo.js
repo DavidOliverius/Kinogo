@@ -91,6 +91,7 @@ const MovieDetail = () => {
           backgroundRepeat: "no-repeat",
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie?.backdrop_path})`,
           height: "100%",
+          maxHeight: "75vh",
         }}
       ></Box>
       <Box
@@ -100,6 +101,7 @@ const MovieDetail = () => {
             "linear-gradient(to right, rgba(12, 6, 38, 1), rgba(12, 6, 38, 0.5))",
           height: "100%",
           width: "100%",
+          maxHeight: "75vh",
           top: 0,
         }}
       ></Box>
@@ -170,7 +172,7 @@ const MovieDetail = () => {
       </Box>
       <Box
         sx={{
-          position: "absolute",
+        
           bottom: 0,
           width: "100%",
         }}
