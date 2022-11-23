@@ -29,13 +29,15 @@ const responsive = {
 };
 
 const MovieCarousel = ({ movies, carouselTitle }) => {
+  const filteredMovies = movies.filter((movie) => movie.poster_path !== null);
+
   return (
     <Box pt="30px" bgcolor="rgb(12, 6, 38)" postion="relative">
-      {!movies ? (
+      {!filteredMovies ? (
         <Spinner />
       ) : (
         <Carousel responsive={responsive} centerMode infinite>
-          {movies.map((movie) => (
+          {filteredMovies.map((movie) => (
             <Link to={`/movie/${movie.id}`} key={movie.id}>
               <Box maxWidth={250}>
                 <Card>
