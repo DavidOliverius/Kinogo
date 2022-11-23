@@ -147,10 +147,12 @@ const MovieDetail = () => {
           width: "100%",
         }}
       >
-        <MovieCarousel
-          movies={!!recommendations && recommendations.results.slice(0, 10)}
-          carouselTitle="Recommendations"
-        />
+        {recommendations?.results.length > 0 && (
+          <MovieCarousel
+            movies={!!recommendations && recommendations.results.slice(0, 10)}
+            carouselTitle="Recommendations"
+          />
+        )}
       </Box>
     </Box>
   );
