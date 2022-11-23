@@ -167,12 +167,15 @@ const MovieDetail = () => {
                 <MovieReviewForm />
               </Modal>
             </div>
-          ) : null}
+          ) : (
+            <h3 style={{ color: "white", marginTop: "200px" }}>
+              Create an account or login to review.
+            </h3>
+          )}
         </Card>
       </Box>
       <Box
         sx={{
-        
           bottom: 0,
           width: "100%",
         }}
@@ -190,8 +193,6 @@ const MovieDetail = () => {
           flexDirection: "column",
           alignItems: "center",
           marginTop: "100px",
-
-          
         }}
       >
         <MovieReviewsDisplay />

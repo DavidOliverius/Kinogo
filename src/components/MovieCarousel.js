@@ -66,7 +66,7 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
                   <CardMedia
                     component="img"
                     alt=""
-                    height="300"
+                    height="400"
                     image={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`}
                   />
                 </Card>
