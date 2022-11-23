@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <Box height="100%">
       <Banner movie={movies[randomNum]} />
-      <MovieCarousel movies={movies.slice(0, 10)} />
+      <MovieCarousel movies={movies.slice(0, 10)} carouselTitle="Trending" />
       <MovieCarousel movies={movies.slice(10, 21)} />
     </Box>
   );
