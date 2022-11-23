@@ -16,7 +16,11 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/auth-provider";
 
 const NavBar = () => {
-  const pages = ["Search", "Movies", "My List"];
+  const pages = [
+    { name: "Search", path: "/search" },
+    { name: "Movies" },
+    { name: "My List" },
+  ];
   const { user } = useAuth();
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
@@ -106,9 +110,9 @@ const NavBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map(({ name, path }) => (
+                <MenuItem href={path} key={name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -133,13 +137,14 @@ const NavBar = () => {
             KINOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map(({ name, path }) => (
               <Button
-                key={page}
+                href={path}
+                key={name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {name}
               </Button>
             ))}
           </Box>
