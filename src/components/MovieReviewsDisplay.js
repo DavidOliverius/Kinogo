@@ -7,6 +7,12 @@ import Avatar from "@mui/material/Avatar";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en.json'
+
+TimeAgo.addDefaultLocale(en)
+
+
 const MovieReviewsDisplay = () => {
   const { id } = useParams();
   const [reviews, setReviews] = React.useState(null);
@@ -39,9 +45,13 @@ const MovieReviewsDisplay = () => {
     return <h1>No reviews yet!</h1>;
   }
 
+  reviews.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
   return (
     <div>
-      <h1>Reviews</h1>
+      <h2>Reviews</h2>
       {reviews.map((review) => (
         <Paper
           style={{
@@ -74,7 +84,7 @@ const MovieReviewsDisplay = () => {
               <p style={{ textAlign: "left" }}>{review.reviewContent} </p>
 
               <p style={{ textAlign: "left", color: "gray" }}>
-                {new Date(review.createdAt).toLocaleDateString()}
+                posted {new TimeAgo('en-US').format(new Date(review.createdAt))}
               </p>
             </Grid>
           </Grid>

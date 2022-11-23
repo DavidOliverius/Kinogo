@@ -6,7 +6,9 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { useAuth } from "../auth/auth-provider";
 import Rating from "@mui/material/Rating";
-import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
 
 function MovieReviewForm() {
   const { id } = useParams();
@@ -36,7 +38,7 @@ function MovieReviewForm() {
       });
   };
 
-  console.log(rating)
+  console.log(rating);
 
   // const handleEdit = (event) => {
   //   event.preventDefault();
@@ -68,73 +70,69 @@ function MovieReviewForm() {
   // };
 
   return (
-    // mui component to create a review, rating, and submit button
-    <Box
-      component="form"
-      sx={{
-        "& > :not(style)": { m: 1, width: "25ch" },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField
-        id="outlined-multiline-static"
-        label="Review"
-        multiline
-        rows={4}
-        defaultValue="Write your review here"
-        onChange={(event) => setReview(event.target.value)}
-      />
-      <Typography component="legend">Rating</Typography>
-      <Rating
-        size="large"
-        name="rating"
-        id="rating"
-        value={rating}
-        precision={0.5}
-        onChange={(event) => setRating(event.target.value)}
-      />
-      <Button variant="contained" onClick={handleSubmit}>
-        Submit
-      </Button>
-    </Box>
+    <div>
+      <h2>Write a review</h2>
+      <Paper
+        style={{
+          padding: "40px 20px",
+          marginBottom: 35,
+          backgroundColor: "#f5f5f5",
+        }}
+      >
+        <Grid container wrap="nowrap" spacing={2}>
+          <Grid item>
+            <Avatar
+              alt={user.displayName}
+              src={`https://avatars.dicebear.com/api/initials/:${user.displayName}.svg?chars=1`}
+            />
+          </Grid>
+          <Grid justifyContent="left" item xs zeroMinWidth>
+            <h3 style={{ margin: 0, textAlign: "left" }}>{user.displayName}</h3>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                textAlign: "left",
+              }}
+            >
+              <Rating
+                name="rating"
+                id="rating"
+                value={rating}
+                precision={0.5}
+                onChange={(event) => setRating(event.target.value)}
+              />
+            </Box>
+            <Grid container justifyItems="center">
+              <Grid item></Grid>
+            </Grid>
+            <p style={{ textAlign: "left" }}>
+              {" "}
+              <TextField
+                sx={{ backgroundColor: "white" }}
+                fullWidth
+                id="outlined-multiline-static"
+                label="What did you think?"
+                multiline
+                rows={4}
+                onChange={(event) => setReview(event.target.value)}
+              />
+            </p>
+
+            <p style={{ textAlign: "left", color: "gray" }}>
+              {" "}
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </p>
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
   );
 }
-
-//     <Box>
-//       <form onSubmit={handleSubmit}>
-//         <div className="form-group">
-//           <label htmlFor="review"></label>
-//           <TextField
-//             className="form-control"
-//             label="Review"
-//             id="reviewContent"
-//             rows="3"
-//             value={reviewContent}
-//             onChange={(event) => setReview(event.target.value)}
-//           ></TextField>
-//         </div>
-//         <Box
-//           sx={{
-//             "& > legend": { mt: 2 },
-//           }}
-//         >
-//           <Typography component="legend">Rating</Typography>
-//           <Rating
-//             size="large"
-//             name="rating"
-//             id="rating"
-//             value={rating}
-//             precision={0.5}
-//             onChange={(event) => setRating(event.target.value)}
-//           />
-//         </Box>
-//         <Button type="submit" variant="contained">
-//           Submit
-//         </Button>
-//       </form>
-//     </Box>
-//   );
-// }
 
 export default MovieReviewForm;
