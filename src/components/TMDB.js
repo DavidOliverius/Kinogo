@@ -1,3 +1,4 @@
+import { Container, ImageList, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
@@ -33,23 +34,27 @@ const TMDB = () => {
   };
 
   return (
-    <div>
+    <Container>
       <div>
-        <h1>Movies</h1>
-        <form onSubmit={searchMovies}>
-          <input
-            placeholder="Search..."
-            type="text"
+        <Container maxWidth={"sm"} sx={{ marginTop: "30px", marginBottom: "30px" }}>
+          <TextField
+            id="outlined-search"
+            label="Search"
+            type="search"
+            fullWidth
+            sx={{ backgroundColor: "white" }}
             onChange={(e) => setSearchKey(e.target.value)}
-          ></input>
-          <button type="submit">Submit</button>
-        </form>
+            onKeyPress={(e) => e.key === "Enter" && searchMovies(e)}
+          />
+        </Container>
+        
+        
       </div>
 
-      <div>
-        <div>{renderMovies()}</div>
-      </div>
-    </div>
+      <ImageList sx={{ width: "100%", height: "100%" }} cols={4}>
+        {renderMovies()}
+      </ImageList>
+    </Container>
   );
 };
 

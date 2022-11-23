@@ -114,7 +114,7 @@ const MovieDetail = () => {
         }}
       >
         <Typography
-          variant="h2"
+          variant="h3"
           component="div"
           color="white"
           fontWeight="bold"
@@ -166,7 +166,11 @@ const MovieDetail = () => {
                 <MovieReviewForm handleClose={handleClose} />
               </Modal>
             </div>
-          ) : null}
+          ) : (
+            <h3 style={{ color: "white", marginTop: "200px" }}>
+              Create an account or login to review.
+            </h3>
+          )}
         </Card>
       </Box>
       <Box
