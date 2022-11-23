@@ -2,6 +2,20 @@
 
 ## T3A2-B - Julia Ohannessian & David Oliverius
 
+### Deployed Site
+
+[kinogo.social](https://kinogo.social)
+
+### Github Repos
+
+#### Frontend
+
+[https://github.com/DavidOliverius/Kinogo](https://github.com/DavidOliverius/Kinogo)
+
+#### Backend
+
+[https://github.com/DavidOliverius/kinogo-backend](https://github.com/DavidOliverius/kinogo-backend)
+
 ### Purpose
 
 The modern streaming landscape often leaves users feeling lost and confused as to what to watch next. There is so much content to watch it is often paralysing, and it is hard to know what is worthwhile. **Kinogo** can help people find something worth watching fast, so you spend less time flicking and more time enjoying.
@@ -14,7 +28,7 @@ The modern streaming landscape often leaves users feeling lost and confused as t
   - Profile page
   - Personal watchlist
   - Add friends
-  - View friends profiles + watchlists
+  - View friends profiles + watchlists `TBC`
 
 - **Movie + TV Show pages**:
 
