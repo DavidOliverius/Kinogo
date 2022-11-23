@@ -66,6 +66,7 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
                     component="img"
                     alt={`${movie.title}`}
                     height="400"
+
                     image={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`}
                   />
                 </Card>
