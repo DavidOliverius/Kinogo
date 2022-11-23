@@ -4,7 +4,7 @@ import axios from "axios";
 // import { Link } from "react-router-dom";
 // import MovieReviewForm from "./MovieReviewForm";
 // import MovieReviewsDisplay from "./MovieReviewsDisplay";
-import { useAuth } from "../auth/auth-provider";
+// import { useAuth } from "../auth/auth-provider";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MovieCarousel from "./MovieCarousel";
