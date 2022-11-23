@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
-  console.log(movie);
+
   return (
     <ImageListItem key={movie.id}>
       <Link to={`../movie/${movie.id}`} relative="true">
