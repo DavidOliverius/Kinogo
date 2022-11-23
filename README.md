@@ -1,6 +1,6 @@
 # Kinogo
 
-## T3A2-A - Julia Ohannessian & David Oliverius
+## T3A2-B - Julia Ohannessian & David Oliverius
 
 ### Purpose
 
@@ -11,20 +11,20 @@ The modern streaming landscape often leaves users feeling lost and confused as t
 - **User profiles**:
 
   - Secure login with Firebase
-  - Profile page with display photo
+  - Profile page
   - Personal watchlist
   - Add friends
   - View friends profiles + watchlists
 
 - **Movie + TV Show pages**:
 
-  - Lookup any Movie or TV Show, page will be populated with data from TMDB API
+  - Search any Movie, page will be populated with data from TMDB API
   - Users can leave written reviews + rating out of 5 stars
-  - Other users can 'like' reviews
+  - Other users can 'like' reviews `TBC`
   - If page has reviews, most liked reviews appear first
-  - Direct user to where they can stream/buy/hire
+  - Direct user to where they can stream/buy/hire `TBC`
 
-- **Suggestion capability**:
+- **Suggestion capability**: `TBC`
 
   - Select genres, years, actors, director
   - Simple algorithm will suggest random titles
@@ -36,14 +36,19 @@ The target audience is anyone who has an interest in Movies and Television - fro
 
 ### Tech stack
 
+**_Libraries:_**
+
+- React Router - to make navigation and routing easier with params
+- Firebase - for user authentication
+- Axios - to make API calls
+- Material UI - for styling
+
 **_Front-end:_**
 
 - React
 - HTML
 - CSS
 - JavaScript
-- Material UI
-- Axios
 - Jest
 
 **_Back-end:_**
@@ -51,7 +56,6 @@ The target audience is anyone who has an interest in Movies and Television - fro
 - ExpressJS
 - Node.js
 - Firebase
-- Mocha
 
 **_Database:_**
 
@@ -82,6 +86,7 @@ The target audience is anyone who has an interest in Movies and Television - fro
 - Visual Code Studio
 
 ### Dataflow Diagram
+
 ![DFD](docs/DFD.png)
 
 #### Application Architecture Diagram
@@ -161,6 +166,7 @@ Here is a link to our Trello [here](https://trello.com/b/3S1sJngX/kinogo)
 
 ### Screenshots of your Trello board throughout the duration of the project
 
+#### Trello Board - Planning
 <img src="./docs/trello_one.png">
 
 <img src="./docs/trello_two.png">
@@ -168,3 +174,9 @@ Here is a link to our Trello [here](https://trello.com/b/3S1sJngX/kinogo)
 <img src="./docs/trello_three.png">
 
 <img src="./docs/trello_four.png">
+
+#### Trello Board - Development
+
+Link to Trello Board [here](https://trello.com/b/9XpsrLKM/sprint-1-kinogo)
+
+<img src="./docs/trello_five.png">
