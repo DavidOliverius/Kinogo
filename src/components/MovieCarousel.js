@@ -8,7 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 
-const responsive = {
+export const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
@@ -29,7 +29,7 @@ const responsive = {
 };
 
 const MovieCarousel = ({ movies, carouselTitle }) => {
-  const filteredMovies = movies.filter((movie) => movie.poster_path !== null);
+  const filteredMovies = movies?.filter((movie) => movie.poster_path !== null);
 
   return (
     <Box
@@ -40,16 +40,15 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
       marginLeft={"auto"}
       marginRight={"auto"}
     >
-          {!!carouselTitle && (
+      {!!carouselTitle && (
         <Typography
           variant="h5"
           sx={{
             color: "white",
             fontWeight: "bold",
-         
             top: -20,
             left: 15,
-            marginBottom: 2
+            marginBottom: 2,
           }}
         >
           {carouselTitle}
@@ -65,7 +64,7 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
                 <Card>
                   <CardMedia
                     component="img"
-                    alt=""
+                    alt={`${movie.title}`}
                     height="300"
                     image={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`}
                   />
@@ -75,7 +74,6 @@ const MovieCarousel = ({ movies, carouselTitle }) => {
           ))}
         </Carousel>
       )}
-  
     </Box>
   );
 };
