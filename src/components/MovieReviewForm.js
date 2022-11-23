@@ -10,7 +10,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../auth/auth-provider";
 
-function MovieReviewForm() {
+function MovieReviewForm({ handleClose }) {
   const { id } = useParams();
   const { user } = useAuth();
   const uid = user.uid;
@@ -30,15 +30,10 @@ function MovieReviewForm() {
         rating: rating,
         reviewAuthorID: uid,
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
+      .then(() => {
+        handleClose();
       });
   };
-
-  console.log(rating);
 
   return (
     <div>
@@ -99,7 +94,6 @@ function MovieReviewForm() {
               </p>
 
               <p style={{ textAlign: "left", color: "gray" }}>
-                {" "}
                 <Button variant="contained" onClick={handleSubmit}>
                   Submit
                 </Button>

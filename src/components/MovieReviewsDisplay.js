@@ -8,6 +8,7 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
 import React from "react";
 import { useParams } from "react-router-dom";
+import Spinner from "./Spinner";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -36,7 +37,7 @@ const MovieReviewsDisplay = () => {
     fetchReviews();
   }, [BASE_URL, id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Spinner />;
   if (error) return <div>Error!</div>;
   if (!reviews) return null;
   if (reviews.length === 0) {
