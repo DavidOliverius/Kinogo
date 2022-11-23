@@ -1,16 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import MovieReviewForm from "./MovieReviewForm";
-import MovieReviewsDisplay from "./MovieReviewsDisplay";
+// import { Link } from "react-router-dom";
+// import MovieReviewForm from "./MovieReviewForm";
+// import MovieReviewsDisplay from "./MovieReviewsDisplay";
 import { useAuth } from "../auth/auth-provider";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MovieCarousel from "./MovieCarousel";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
+// import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 
 const MovieDetail = () => {
